@@ -8,11 +8,11 @@ void setup()
   background(255);
   stroke(0, 0, 0);
   p = new Particle[5];
-  p[0] = new Particle(20);
-  p[1] = new Particle(15);
-  p[2] = new Particle(10);
-  p[3] = new Particle(5);
-  p[4] = new Particle(2);
+  p[0] = new Particle(20, 12);
+  p[1] = new Particle(15, 11);
+  p[2] = new Particle(10, 10);
+  p[3] = new Particle(5, 9);
+  p[4] = new Particle(2, 8);
 }
 
 void draw()
@@ -27,12 +27,22 @@ void draw()
 class Particle
 {
   float x, y, radius;
+  float maxSpeed;
   
   Particle(float radius)
   {
     this.x = 0;
     this.y = 0;
     this.radius = radius;
+    this.maxSpeed = 5;
+  }
+  
+  Particle(float radius, float maxSpeed)
+  {
+    this.x = 0;
+    this.y = 0;
+    this.radius = radius;
+    this.maxSpeed = maxSpeed;
   }
   
   void draw()
@@ -44,7 +54,16 @@ class Particle
   
   void update()
   {
-    x = pmouseX;
-    y = pmouseY;
+    if(x < mouseX) {
+      x += maxSpeed;
+    } else {
+      x -= maxSpeed;
+    }
+    
+    if(y < mouseY) {
+      y += maxSpeed;
+    } else {
+      y -= maxSpeed;
+    }
   }
 }
