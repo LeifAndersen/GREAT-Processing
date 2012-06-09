@@ -12,7 +12,7 @@ void draw()
 {
   if(mousePressed) {
     if(mouseY < 100) {
-      if(mouseX < 320) {
+      if(mouseX < 400) {
         background(255);
         stroke(0, 0, 0);
         drawCanvas();
@@ -46,6 +46,14 @@ void draw()
 void drawCanvas()
 {
   stroke(0, 0, 0);
+  fill(255, 255, 255);
+  rect(0, 0, 400, 100);
+  rect(400, 0, 400, 100);
+  fill(0, 0, 0);
+  textAlign(CENTER);
+  textSize(50);
+  text("NEW", 200, 70);
+  text("SAVE", 600, 70);
   fill(0, 0, 0);
   rect(0, 700, 100, 100);
   fill(255, 0, 0);
