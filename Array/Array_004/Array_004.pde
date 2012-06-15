@@ -34,4 +34,9 @@ class Vector
     this.x = x;
     this.y = y;
   }
+  
+  String toString()
+  {
+    return "[" + x + ", " + y + "]";
+  }
 }

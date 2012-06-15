@@ -1,4 +1,4 @@
-float[] positions = new float[10];
+int[] positions = new int[20];
 int index = 0;
 
 void setup()
@@ -13,7 +13,7 @@ void draw()
 {
   // Draw Balls
   background(255);
-  for(int i = 0; i < 10; i+=2) {
+  for(int i = 0; i < positions.length; i+=2) {
     ellipse(positions[i], positions[i+1], 25, 25);
   }
   println(positions);
@@ -24,5 +24,5 @@ void mousePressed()
 {
     positions[index++] = mouseX; // positions[index] = mouseX; index = index + 1;
     positions[index++] = mouseY; // positions[index] = mouseY; index = index + 1;
-    index %= 10;
+    index = index % positions.length;
 }
