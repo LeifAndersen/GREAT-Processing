@@ -155,9 +155,22 @@ void draw()
       }
     }
 
+    if (x < -280 && y < -150) {
+      images[0] = loadImage("WHY.png");
+      images[1]= loadImage("WheresButter.png");
+      images[2]= loadImage("SCENE3.png");
+      images[3] = loadImage("SCENE4.png");
+      images[4] = loadImage ("Fin.png");
+      curImage = 0;
+      state = 4;
+    }
+
     // draw toast
     imageMode(CORNER);
     image(toast, width/2, height/2, 100, 100);
+    break;
+  case 4:
+    image(images[curImage], 0, 0);
     break;
   }
 }
@@ -196,6 +209,16 @@ void mousePressed()
       return;
     }
     curImage++;
+    break;
+  case 4:
+    if (curImage == 4) {
+      state = 5;
+      backdropx=width/2;
+      backdropy=height/2;
+      return;
+    }
+    curImage++;
+    break;
   }
 }
 
