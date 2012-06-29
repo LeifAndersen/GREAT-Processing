@@ -2,57 +2,67 @@ int backdropx=0;
 int backdropy=0;
 PImage wood; 
 PImage theQuack;
+PImage[] images = new PImage[5];
+int curImage = 1;
+
+int state = 0;
+
 void setup()
 {
   size(1000, 750);
   wood= loadImage("free_hires_wood_texture_5[1].jpg");
   theQuack= loadImage("theQuack.jpg");
+  images[0] = loadImage("toastyscene1.png");
+  images[1]= loadImage("toastyscene2.png");
+  images[2]= loadImage("toastyscene3.png");
+  images[3] = loadImage("toastyscene4.png");
+  images[4] = loadImage ("toastyscene6.png");
 }
+
 void draw()
 {
-  println("backdrop x is");
-  println(backdropy);
-  if (keyPressed)
-  {
-    if (backdropx < 0)
+  switch(state) {
+  case 0:
+    if (keyPressed)
     {
-      if (key=='a') //left
+      if (backdropx < 0)
       {
-        backdropx +=3;
+        if (key=='a') //left
+        {
+          backdropx +=3;
+        }
+      }
+
+      if (backdropx > -1000) {
+        if (key=='d') //right
+        {
+          backdropx -=3;
+        }
+      }
+
+      if (backdropy <-3) {
+        if (key=='w') //up
+        {
+          backdropy +=3;
+        }
+      }
+
+      if (backdropy >-747) {
+        if (key=='s') //down
+        {
+          backdropy -=3;
+        }
       }
     }
 
-    if (backdropx > -1000) {
-      if (key=='d') //right
-      {
-        backdropx -=3;
-      }
-    }
-
-    if (backdropy <-3) {
-      if (key=='w') //up
-      {
-        backdropy +=3;
-      }
-    }
-
-    if (backdropy >-747) {
-      if (key=='s') //down
-      {
-        backdropy -=3;
-      }
-    }
+    background(0);
+    image(wood, backdropx, backdropy, 1000, 750);
+    image(wood, backdropx+1000, backdropy, 1000, 750);
+    image(wood, backdropx+1000, backdropy+750, 1000, 750);
+    image(wood, backdropx, backdropy+750, 1000, 750);
+    toast();
+    break;
   }
-
-
-
-
-  background(0);
-  image(wood, backdropx, backdropy, 1000, 750);
-  image(wood, backdropx+1000, backdropy, 1000, 750);
-  image(wood, backdropx+1000, backdropy+750, 1000, 750);
-  image(wood, backdropx, backdropy+750, 1000, 750);
-  toast();
 }
 
 void toast()
@@ -79,6 +89,4 @@ void toast()
   {
   }
 }
-
-
 
