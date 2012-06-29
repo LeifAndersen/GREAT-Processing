@@ -6,6 +6,10 @@ PImage[] images = new PImage[5];
 int curImage = 1;
 PImage toast;
 PImage backdrop;
+int x =0;
+int y =0;
+boolean collid;
+
 
 int state = 0;
 
@@ -22,6 +26,7 @@ void setup()
   backdrop=loadImage("gamemaze.png");
   toast=loadImage("toast.png");
   background(255);
+  collid = false;
 }
 
 void draw()
@@ -60,7 +65,7 @@ void draw()
       }
     }
 
-    if (backdropx < -900 && backdropy < -700)
+    if (backdropx < -800 && backdropy < -600)
     {
       state = 1;
     }
@@ -96,6 +101,63 @@ void draw()
     {
       backdropx=backdropx+1;
     }
+    if (backdropx < -70 && backdropy < 350) {
+      backdrop = loadImage("backdrop.jpg");
+      toast = loadImage("toast.jpg");
+      state = 3;
+    }
+    break;
+  case 3:
+    fill(0);
+    imageMode(CORNER);
+    background(255);
+    image(backdrop, x, y);
+
+    loadPixels();
+    if (keyPressed)
+    {
+      if (key == 'w')
+      {
+        collid = (red(pixels[width/2+((height/2)-3)*width])  == 0 ||
+          red(pixels[((width/2)+100)+((height/2)-3)*width])  == 0);
+        if (!collid)
+        {
+          y=y+3;
+        }
+      }
+      if (key == 's')
+      {
+        collid = (red(pixels[width/2+((height/2)+103)*width]) == 0 ||
+          red(pixels[((width/2)+100)+((height/2)+103)*width])  == 0);
+        if (!collid)
+
+        {
+          y=y-3;
+        }
+      }
+      if (key == 'd')
+      {
+        collid = (red(pixels[((width/2)+103)+((height/2)+100)*width])  == 0 ||
+          red(pixels[((width/2)+103)+((height/2))*width])  == 0);
+        if (!collid)
+        {
+          x=x-3;
+        }
+      }
+      if (key == 'a')
+      { 
+        collid = (red(pixels[(width/2)-3+((height/2)+100)*width]) == 0 ||
+          red(pixels[(width/2)-3+((height/2))*width])  == 0);
+        if (!collid)
+        {
+          x=x+3;
+        }
+      }
+    }
+
+    // draw toast
+    imageMode(CORNER);
+    image(toast, width/2, height/2, 100, 100);
     break;
   }
 }
