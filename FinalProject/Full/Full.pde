@@ -55,12 +55,20 @@ void draw()
       }
     }
 
+    if (backdropx < -900 && backdropy < -700)
+    {
+      state = 1;
+    }
+
     background(0);
     image(wood, backdropx, backdropy, 1000, 750);
     image(wood, backdropx+1000, backdropy, 1000, 750);
     image(wood, backdropx+1000, backdropy+750, 1000, 750);
     image(wood, backdropx, backdropy+750, 1000, 750);
     toast();
+    break;
+  case 1:
+    image(images[curImage], 0, 0);
     break;
   }
 }
@@ -86,7 +94,14 @@ void toast()
   ellipse(200, 110, 20, 20);
   image(theQuack, backdropx+950, backdropy+700, 500, 500);
   strokeWeight(9);
-  {
+}
+
+void mousePressed()
+{
+  switch(state) {
+  case 1:
+    curImage++;
+    curImage = curImage % 5;
   }
 }
 
