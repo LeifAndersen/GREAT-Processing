@@ -1,9 +1,11 @@
-int backdropx=0;
-int backdropy=0;
+float backdropx=0;
+float backdropy=0;
 PImage wood; 
 PImage theQuack;
 PImage[] images = new PImage[5];
 int curImage = 1;
+PImage toast;
+PImage backdrop;
 
 int state = 0;
 
@@ -17,6 +19,9 @@ void setup()
   images[2]= loadImage("toastyscene3.png");
   images[3] = loadImage("toastyscene4.png");
   images[4] = loadImage ("toastyscene6.png");
+  backdrop=loadImage("gamemaze.png");
+  toast=loadImage("toast.png");
+  background(255);
 }
 
 void draw()
@@ -70,6 +75,28 @@ void draw()
   case 1:
     image(images[curImage], 0, 0);
     break;
+  case 2:
+    imageMode(CENTER);
+    background(255);
+    image(backdrop, backdropx, backdropy, width, height);
+    image(toast, 182, 521, 40, 55);
+    if (keyPressed && key == 'w')
+    {
+      backdropy=backdropy+1;
+    }
+    if (keyPressed && key == 's')
+    {
+      backdropy=backdropy-1;
+    }
+    if (keyPressed && key == 'd')
+    {
+      backdropx=backdropx-1;
+    }
+    if (keyPressed && key == 'a')
+    {
+      backdropx=backdropx+1;
+    }
+    break;
   }
 }
 
@@ -100,8 +127,13 @@ void mousePressed()
 {
   switch(state) {
   case 1:
+    if (curImage == 4) {
+      state = 2;
+      backdropx=width/2;
+      backdropy=height/2;
+      return;
+    }
     curImage++;
-    curImage = curImage % 5;
   }
 }
 
