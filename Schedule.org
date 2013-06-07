@@ -1,0 +1,42 @@
+* Monday
+** Morning
+*** Rules
+*** Demo
+*** Set Up
+*** Coordinate system
+*** Draw a point/square
+** Afternoon
+*** Interactivity
+*** Conditionals
+*** Painting Program
+* Tuesday
+** Morning
+*** Variables
+*** Paint buckets
+*** (Optional) Print Debugging
+** Afternoon
+*** Loops
+*** Brownian Motion
+*** Face Drawing
+* Wednesday
+** Morning
+*** Functions
+*** Multi-face drawing
+*** Following cursor, possibly with face function.
+** Afternoon
+*** Particle Engine
+* Thursday
+** Morning
+*** Arrays
+*** Pointalism
+** Afternoon
+*** Games?
+* Friday
+** Morning
+*** Tablets
+*** Kinect
+*** Arduino
+** Afternoon
+*** Wrap Up
+*** Parent Demo
+
